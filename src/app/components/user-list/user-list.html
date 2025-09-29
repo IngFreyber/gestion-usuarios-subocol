@@ -1,0 +1,70 @@
+<div class="user-list__actions">
+  <button mat-flat-button color="primary" (click)="add()">Nuevo Usuario</button>
+</div>
+
+<!-- Panel de Filtros -->
+<mat-card>
+  <form [formGroup]="formFilter" class="filter-form" autocomplete="off">
+    <div class="user-list__filters">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name" placeholder="Filtrar por nombre">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Filtrar por email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Ciudad</mat-label>
+        <input matInput formControlName="city" placeholder="Filtrar por ciudad">
+      </mat-form-field>
+    </div>
+    <div class="user-list__filters">
+      <button mat-raised-button color="primary" type="button" (click)="clearFilters()">
+        Limpiar filtros
+      </button>
+    </div>
+  </form>
+</mat-card>
+
+<!-- Tabla -->
+<table [dataSource]="getPaginatedUsers()" mat-table class="mat-elevation-z8 user-list__table">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let user">{{ user.id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="city">
+    <th mat-header-cell *matHeaderCellDef>Ciudad</th>
+    <td mat-cell *matCellDef="let user">{{ user.city }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let user">
+      <button mat-button color="accent" (click)="edit(user)"><mat-icon>edit</mat-icon></button>
+      <button mat-button color="warn" (click)="remove(user)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [length]="filteredUsers.length"
+               [pageSize]="pageSize"
+               [pageIndex]="pageIndex"
+               (page)="pageChange($event)">
+</mat-paginator>

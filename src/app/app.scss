@@ -1,0 +1,21 @@
+.app {
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    img {
+      height: 40px;
+    }
+
+    span {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+
+  &__container {
+    padding: 1rem;
+    overflow: auto;
+  }
+}

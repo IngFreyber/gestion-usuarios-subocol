@@ -1,0 +1,75 @@
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: 1rem;
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    button {
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.2s ease-in-out;
+      margin-bottom: 10px;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem;
+    justify-content: flex-end;
+
+
+    mat-form-field {
+      flex: 1;
+      min-width: 200px;
+    }
+  }
+
+  &__filter-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 0.5rem;
+
+    button {
+      border-radius: 8px;
+      font-weight: 500;
+      min-width: 100px;
+    }
+  }
+
+  &__table {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin: 1rem 0 1rem 0;
+
+    th {
+      font-weight: 600;
+      background: #f5f7fa;
+    }
+
+    tr.mat-row:hover {
+      background: #f9fafc;
+      transition: background 0.2s ease-in-out;
+    }
+  }
+}
+
+mat-paginator {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}

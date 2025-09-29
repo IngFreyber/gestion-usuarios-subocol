@@ -1,0 +1,27 @@
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 1rem;
+
+  &__field {
+    width: 100%;
+  }
+
+  button {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+mat-dialog-content {
+  background: #fafafa;
+  padding: 1rem;
+  border-radius: 12px;
+}
